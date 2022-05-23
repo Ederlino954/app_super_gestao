@@ -43,7 +43,7 @@ class CreateUnidadesTable extends Migration
     {
 
         // remover relacionamento com a tabela de produto_detalhes
-        Schema::create('produto_detalhes', function (Blueprint $table) {
+        Schema::table('produto_detalhes', function (Blueprint $table) {
             // remover a foreign key
             $table->dropForeign('produto_detalhes_unidade_id_foreign'); // [table]_[column]_foreign
             // remover a coluna unidade_id
@@ -51,7 +51,7 @@ class CreateUnidadesTable extends Migration
         });
 
         // remover relacionamento com a tabela de produtos
-        Schema::create('produtos', function (Blueprint $table) {
+        Schema::table('produtos', function (Blueprint $table) {
             // remover a foreign key
             $table->dropForeign('produtos_unidade_id_foreign'); // [table]_[column]_foreign
             // remover a coluna unidade_id

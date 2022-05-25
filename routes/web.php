@@ -27,7 +27,7 @@ Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 Route::get('/login', function (){return 'login'; })->name('site.login');
 
 // Route::middleware('autenticacao:padrao')->prefix('/app')->group(function () { // padrao parametro enviado para middleware
-Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(function () { // mais de um parametro enviado para middleware
+Route::middleware('autenticacao:padrao,visitante,p3,p4')->prefix('/app')->group(function () { // mais de um parametro enviado para middleware
     Route::get('/clientes', function (){return 'clientes'; })->name('app.clientes');
     Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
     Route::get('/produtos', function (){return 'produtos'; })->name('app.produtos');

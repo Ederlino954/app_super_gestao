@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\LogAcessoMiddleware;
+// use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,14 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', 'PrincipalController@principal')->name('site.index')->middleware('LogAcessoMiddleware');
 
-Route::middleware(LogAcessoMiddleware::class)
-    ->get('/', 'PrincipalController@principal')
-    ->name('site.index'); // outra padrão de uso de middleware
+Route::get('/', 'PrincipalController@principal')->name('site.index');
 
 Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
-Route::get('/contato', 'ContatoController@contato')
-        ->name('site.contato')
-        ->middleware(LogAcessoMiddleware::class);
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 Route::get('/login', function (){return 'login'; })->name('site.login');

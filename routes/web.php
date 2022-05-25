@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return 'Hello World';
 // });
 
-// Route::get('/', 'PrincipalController@principal')->name('site.index')->middleware('LogAcessoMiddleware');
-
-Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/', 'PrincipalController@principal')->name('site.index')->middleware('log.acesso');
 
 Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');

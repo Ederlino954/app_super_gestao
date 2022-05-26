@@ -38,7 +38,7 @@
                                     <td>{{ $fornecedor->email }}</td>
                                     <td>
                                         <a href=" {{ route('app.fornecedor.editar', $fornecedor->id) }} ">Editar</a>
-                                        {{-- <a href=" {{ route('app.fornecedor.excluir', $fornecedor->id) }} ">Excluir</a> --}}
+                                        <a href=" {{ route('app.fornecedor.excluir', $fornecedor->id) }} ">Excluir</a>
                                     </td>
                                 </tr>
                             @empty
@@ -49,7 +49,7 @@
                         </tbody>
                     </table>
 
-                    {{-- não perde o resultado da pesuisa ao paginar --}}
+                    {{-- não perde o resultado da pesquisa ao paginar --}}
                     {{ $fornecedores->appends($request)->links() }}
                     {{-- <hr>
                     {{ $fornecedores->count() }} - total de registros por página

@@ -6,16 +6,24 @@
 
         <div class="conteudo-pagina">
             <div class="titulo-pagina">
-                <h1>Entre em contato conosco</h1>
+                <h1>Login</h1>
             </div>
 
             <div class="informacao-pagina">
-                <div class="contato-principal">
-                    {{-- @component('site.layouts._components.form_contato', ['x' => 35]) --}}
-                    @component('site.layouts._components.form_contato', ['classe' => 'borda-preta', 'motivo_contatos' => $motivo_contatos])
-                        <p>A nossa equipe analisará a sua mensagem o mais brevemente possivel e estaremos retornando </p>
-                        <p>Nosso tempo médio de respostaas é de 48 horas </p>
-                    @endcomponent
+                <div style="width: 30%; margin-left: auto; margin-right: auto;">
+                    <form action="{{ route('site.login') }}" method="post">
+                        @csrf
+                        <input name="usuario" value="{{ old('usuario') }}" type="text" placeholder="Usuário" class="borda-preta">
+                        @if ($errors->has('usuario'))
+                            <span class="error">{{ $errors->first('usuario') }}</span>
+                        @endif
+                        <input name="senha" value="{{ old('senha') }}" type="password" placeholder="Senha" class="borda-preta">
+                        @if ($errors->has('senha'))
+                            <span class="error">{{ $errors->first('senha') }}</span>
+                        @endif
+                        <button type="submit" class="borda-preta">Acessar</button>
+                    </form>
+                    {{ isset($erro) && $erro != '' ? $erro : '' }}
                 </div>
             </div>
         </div>

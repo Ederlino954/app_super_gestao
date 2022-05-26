@@ -48,8 +48,20 @@
                             @endforelse
                         </tbody>
                     </table>
+
                     {{-- não perde o resultado da pesuisa ao paginar --}}
                     {{ $fornecedores->appends($request)->links() }}
+                    {{-- <hr>
+                    {{ $fornecedores->count() }} - total de registros por página
+                    <hr>
+                    {{ $fornecedores->total() }} - registros encontrados no total
+                    <hr>
+                    {{ $fornecedores->firstItem() }} - número do primeiro registro da página
+                    <hr>
+                    {{ $fornecedores->lastItem() }} - número do último registro da página
+                    <hr> --}}
+                    <hr>
+                    Exibindo {{ $fornecedores->count() }} fornecedores do total de {{ $fornecedores->total() }} (de {{ $fornecedores->firstItem() }} a {{ $fornecedores->lastItem() }})
                 </div>
             </div>
 

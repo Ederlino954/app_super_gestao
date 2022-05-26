@@ -37,10 +37,8 @@
                                     <td>{{ $fornecedor->uf }}</td>
                                     <td>{{ $fornecedor->email }}</td>
                                     <td>
-                                        {{-- <a href=" {{ route('app.fornecedor.editar', $fornecedor->id) }} ">Editar</a> --}}
+                                        <a href=" {{ route('app.fornecedor.editar', $fornecedor->id) }} ">Editar</a>
                                         {{-- <a href=" {{ route('app.fornecedor.excluir', $fornecedor->id) }} ">Excluir</a> --}}
-                                        <a href=" # ">Editar</a>
-                                        <a href=" #">Excluir</a>
                                     </td>
                                 </tr>
                             @empty
@@ -50,6 +48,8 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{-- não perde o resultado da pesuisa ao paginar --}}
+                    {{ $fornecedores->appends($request)->links() }}
                 </div>
             </div>
 

@@ -45,6 +45,10 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4')->prefix('/app')->group(
     // produtos
     // Route::get('/produto', 'ProdutoController@index')->name('app.produto');
     Route::resource('produto', 'ProdutoController');
+
+    // Produtos detalhes
+    Route::resource('produto-detalhes', 'ProdutoDetalheController');
+
 });
 
 Route::fallback(function () {

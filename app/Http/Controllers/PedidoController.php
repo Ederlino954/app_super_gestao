@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\Pedido;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,27 @@ class PedidoController extends Controller
 
     public function create()
     {
-        //
+        $clientes = Cliente::all();
+        return view('app.pedido.create', ['clientes' => $clientes]);
     }
 
     public function store(Request $request)
     {
-        //
+        $regras = [
+            'cliente_id' => ['exists:clientes,id'],
+        ];
+
+        $mensagens = [
+            'cliente_id.exists' => 'Cliente não encontrado',
+        ];
+
+        $request->validate($regras, $mensagens);
+
+        $pedido = new Pedido();
+        $pedido->cliente_id = $request->get('cliente_id');
+        $pedido->save();
+
+        return redirect()->route('pedido.index');
     }
 
     public function show($id)

@@ -7,7 +7,7 @@
         <div class="conteudo-pagina">
 
             <div class="titulo-pagina-2">
-                <h1>Listagem de pedidos</h1>
+                <h1>Listagem de Pedidos</h1>
             </div>
 
             <div class="menu">
@@ -26,12 +26,13 @@
                                 <th>Cliente</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($pedidos as $pedido)
                                 <tr>
-                                    <td>{{ $pedido->nome }}</td>
+                                    <td>{{ $pedido->id }}</td>
                                     <td>{{ $pedido->cliente_id }}</td>
                                     <td><a href=" {{ route('pedido.show', ['pedido' => $pedido->id ]) }} ">visualizar</a></td>
                                     <td>

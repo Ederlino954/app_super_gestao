@@ -15,12 +15,28 @@ class ClienteController extends Controller
 
     public function create()
     {
-        //
+        return view('app.cliente.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $regras = [
+            'nome' => 'required|min:3|max:40',
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatório',
+            'min' => 'O campo :attribute deve ter no mínimo :min caracteres',
+            'max' => 'O campo :attribute deve ter no máximo :max caracteres',
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $cliente = new Cliente();
+        $cliente->nome = $request->nome;
+        $cliente->save();
+
+        return redirect()->route('cliente.index')->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     public function show($id)

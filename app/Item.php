@@ -9,11 +9,15 @@ class Item extends Model
     protected $table = 'produtos';
     protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
 
-    public function itemDetalhe()
+    public function itemDetalhe() /// Lazy Loading - Carrega apenas quando for necessário
     {
         return $this->hasOne('App\ItemDetalhe', 'produto_id', 'id'); // 1:1
-
-        // 1 registro relacionado em produto_detalhes (fk)
-        // produtos (pk)->id
     }
+
+    // exemplo Eager Loading - Carrega todos os dados
+        public function rel2() /// Eager Loading - Carrega todos os dados
+        {
+            return $this->hasOne('App\Rel2', 'produto_id', 'id'); // 1:1
+        }
+    // ------------------------------------------------------
 }

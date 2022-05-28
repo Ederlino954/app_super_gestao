@@ -14,10 +14,11 @@ class Item extends Model
         return $this->hasOne('App\ItemDetalhe', 'produto_id', 'id'); // 1:1
     }
 
-    // exemplo Eager Loading - Carrega todos os dados
-        public function rel2() /// Eager Loading - Carrega todos os dados
-        {
-            return $this->hasOne('App\Rel2', 'produto_id', 'id'); // 1:1
-        }
-    // ------------------------------------------------------
+
+    public function fornecedor()
+    {
+        return $this->belongsTo('App\Fornecedor'); // 1 produto pertence a 1 fornecedor
+    }
+
+
 }

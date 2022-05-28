@@ -17,9 +17,10 @@
             </div>
 
             <div class="informacao-pagina">
-
+                {{-- {{ $produto_detalhe->tojson() }} --}}
                 <h4>Produto</h4>
                 <div>Nome: {{ $produto_detalhe->item->nome }} </div>
+                {{-- {{ $produto_detalhe->tojson() }} --}}
                 <br>
                 <div>Descrição: {{ $produto_detalhe->item->descricao }} </div>
 

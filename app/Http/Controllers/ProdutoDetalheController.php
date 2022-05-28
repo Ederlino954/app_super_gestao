@@ -35,7 +35,8 @@ class ProdutoDetalheController extends Controller
 
     public function edit($id)
     {
-        $produtoDetalhe = ItemDetalhe::find($id);
+        // $produtoDetalhe = ItemDetalhe::find($id); // Lazy Loading - Carrega apenas quando for necessário
+        $produtoDetalhe = ItemDetalhe::with('item')->find($id); // eager Loading - Carrega todos os dados
         $unidades = Unidade::all();
         return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe], ['unidades' => $unidades]);
     }

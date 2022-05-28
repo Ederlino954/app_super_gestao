@@ -19,14 +19,14 @@
             </span>
         @endif
 
-        <input type="text" name="largura" value="{{ $produto_detalhe->peso ?? old('largura') }}" placeholder="Largura" class="borda-preta">
+        <input type="text" name="largura" value="{{ $produto_detalhe->largura ?? old('largura') }}" placeholder="Largura" class="borda-preta">
         @if ($errors->has('largura'))
             <span class="help-block">
                 <strong>{{ $errors->first('largura') }}</strong>
             </span>
         @endif
 
-        <input type="text" name="altura" value="{{ $produto_detalhe->peso ?? old('altura') }}" placeholder="Altura" class="borda-preta">
+        <input type="text" name="altura" value="{{ $produto_detalhe->altura ?? old('altura') }}" placeholder="Altura" class="borda-preta">
         @if ($errors->has('altura'))
             <span class="help-block">
                 <strong>{{ $errors->first('altura') }}</strong>

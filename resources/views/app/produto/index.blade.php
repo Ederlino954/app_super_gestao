@@ -26,6 +26,9 @@
                                 <th>Descrição</th>
                                 <th>Peso</th>
                                 <th>Unidade_id</th>
+                                <th>Comprimento</th>
+                                <th>Altura</th>
+                                <th>Largura</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -38,6 +41,9 @@
                                     <td>{{ $produto->descricao }}</td>
                                     <td>{{ $produto->peso }}</td>
                                     <td>{{ $produto->unidade_id }}</td>
+                                    <td>{{ $produto->comprimento ?? 'Não possui' }} </td>
+                                    <td>{{ $produto->altura ?? 'Não possui' }}</td>
+                                    <td>{{ $produto->largura ?? 'Não possui' }}</td>
                                     <td><a href=" {{ route('produto.show', ['produto' => $produto->id ]) }} ">visualizar</a></td>
                                     <td>
                                         <form id="form_{{$produto->id}}" action=" {{ route('produto.destroy', ['produto' => $produto->id ]) }} " method="POST">
@@ -59,9 +65,7 @@
 
                     {{-- não perde o resultado da pesquisa ao paginar --}}
                     {{ $produtos->appends($request)->links() }}
-                    <hr>
 
-                    <hr>
                     Exibindo {{ $produtos->count() }} produtos do total de {{ $produtos->total() }} (de {{ $produtos->firstItem() }} a {{ $produtos->lastItem() }})
                 </div>
             </div>

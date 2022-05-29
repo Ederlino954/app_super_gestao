@@ -25,23 +25,36 @@ class PedidoProdutoController extends Controller
     {
         $regras = [
             'produto_id' => 'exists:produtos,id',
+            'quantidade' => 'required',
         ];
 
         $mensagens = [
             'produto_id.exists' => 'O produto não existe',
+            'quantidade.required' => 'A quantidade é obrigatória',
         ];
 
         $request->validate($regras, $mensagens);
 
-        $pedidoProduto = new PedidoProduto();
-        $pedidoProduto->pedido_id = $pedido->id;
-        $pedidoProduto->produto_id = $request->produto_id;
-        $pedidoProduto->save();
+        //****************************************** */
+        // $pedidoProduto = new PedidoProduto();
+        // $pedidoProduto->pedido_id = $pedido->id;
+        // $pedidoProduto->produto_id = $request->get('produto_id');
+        // $pedidoProduto->quantidade = $request->get('quantidade');
+        // $pedidoProduto->save();
+        //****************************************** */
+
+        // // $pedido->produtos; // registros do relacionamento
+        // $pedido->produtos()->attach(
+        //     $request->get('produto_id'),
+        //     ['quantidade' => $request->get('quantidade') // e demais colunas que precisar
+        // ]); // objeto
+
+        $pedido->produtos()->attach([
+            $request->get('produto_id') => ['quantidade' => $request->get('quantidade')] // ir incluindo conforme necessidade
+            // $request->get('produto_id') => ['quantidade' => $request->get('quantidade')],
+        ]); // exemplo em caso de multiplos salvamentos de registros
 
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
-
-
-
 
     }
 

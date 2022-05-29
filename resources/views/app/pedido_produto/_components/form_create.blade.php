@@ -16,6 +16,12 @@
         </span>
     @endif
 
+    <input type="number" name="quantidade" value="{{ old('quantidade') ? old('quantidade') : '' }}" placeholder="Quantidade" classe="borda-preta" >
+    @if ($errors->has('quantidade'))
+        <span class="help-block">
+            <strong>{{ $errors->first('quantidade') }}</strong>
+        </span>
+    @endif
 
     <button type="submit" class="borda-preta">Cadastrar</button>
 

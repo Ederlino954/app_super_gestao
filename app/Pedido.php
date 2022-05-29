@@ -9,7 +9,7 @@ class Pedido extends Model
     public function produtos()
     {
         // return $this->belongsToMany('App\Produto', 'pedidos_produtos');
-        return $this->belongsToMany('App\Item', 'pedidos_produtos', 'pedido_id', 'produto_id'); // situação de nomes fora do padrão
+        return $this->belongsToMany('App\Item', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('created_at', 'updated_at'); // situação de nomes fora do padrão
 
         /* N:N
         * 1-modelo de relacionamento N:N em relação ao modelo em que estamos implementando

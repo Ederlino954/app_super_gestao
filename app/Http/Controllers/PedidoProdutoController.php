@@ -73,7 +73,7 @@ class PedidoProdutoController extends Controller
         //
     }
 
-    public function destroy(Pedido $pedido, Produto $produto)
+    public function destroy(PedidoProduto $pedidoProduto, $pedido_id)
     {
         // dd($pedido->getAttributes());
         // dd($produto->getAttributes());
@@ -86,9 +86,11 @@ class PedidoProdutoController extends Controller
         // ])->delete();
 
         // dettach remove pelo relacionamento do model
-        $pedido->produtos()->detach($produto->id);
+        // $pedido->produtos()->detach($produto->id);
 
-        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
+        $pedidoProduto->delete();
+
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido_id]);
 
     }
 
